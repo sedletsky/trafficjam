@@ -1,0 +1,18 @@
+{
+  "name": "tinnyneck",
+  "authors": [
+    "mikhailsedletsky <mihailsedletsky@icloud.com>"
+  ],
+  "license": "$$$",
+  "private": true,
+  "dependencies": {
+    "yjs": "^12.3.3",
+    "y-memory": "^8.0.9",
+    "y-webrtc": "^8.0.7",
+    "y-array": "^10.1.4",
+    "y-text": "^9.5.1",
+    "y-indexeddb": "^8.1.9",
+    "lodash": "^4.17.4",
+    "y-test": "^0.4.1"
+  }
+}
