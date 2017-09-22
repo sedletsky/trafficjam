@@ -12,6 +12,9 @@ const helpers = {
   event(event) {
     return {type: event.type, data: event.values || event.oldValues}
   }
+  signin(credentials) {
+    console.log(Model.y.db.userId)
+  }
 }
 
 class Model {
@@ -27,7 +30,7 @@ class Model {
   }
 
   static connect(options) {
-    return (Model.connector = Y({
+    Y({
       db: {
         name: options.persist || "memory"
       },
@@ -35,21 +38,24 @@ class Model {
       sourceDir: "/bower_components",
       share: helpers.share(options)
     }).then(y => {
-      Model.readyActions.map(action => {
+      Model.y = y
+      Model.actions.ready.map(action => {
         action(y.share)
       })
-    }))
+      helpers.signin({})
+    })
   }
 
   static ready(action) {
-    Model.readyActions.push(action)
+    Model.actions.ready.push(action)
   }
 }
 
-Model.connector = null
-Model.readyActions = []
+Model.actions = {
+  ready: []
+}
 
-class Message {
+class Data {
   constructor(data, options, collection=null) {
     this.data = data
     this.options = options
@@ -57,9 +63,26 @@ class Message {
   }
 }
 
-class Messages {
+class Collection {
   constructor(options) {
     this.collection = options.collection || []
     this.options = options
+  }
+}
+
+class Game extends Data {
+  constructor(
+  ) {
+    super({
+      id,
+      title,
+      // localizedTitle
+    })
+  }
+}
+
+class Games extends Collection {
+  constructor() {
+    super({collection: []})
   }
 }
