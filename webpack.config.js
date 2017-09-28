@@ -1,9 +1,9 @@
 var path = require("path")
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/trafficjam/index.js",
   output: {
-    filename: "./public/app.js"
+    filename: "./dist/trafficjam.js"
   },
   module: {
     loaders: [
@@ -11,10 +11,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         loader: "babel-loader"
-      },
-      {
-        test: /\.rt$/,
-        loader: "react-templates-loader?modules=es6"
       }
     ]
   },
